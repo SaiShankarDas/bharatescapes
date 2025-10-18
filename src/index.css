@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cream-white text-royal-blue font-poppins antialiased;
+}
+
+/* For smooth scrolling on anchor links if needed */
+html {
+  scroll-behavior: smooth;
+}
+
+.video-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(10, 29, 55, 0.8) 0%, rgba(10, 29, 55, 0.4) 50%, rgba(10, 29, 55, 0.2) 100%);
+    z-index: 1;
+}
+
+/* Hide scrollbar for gallery */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* For DomeGallery scroll lock */
+.dg-scroll-lock {
+  overflow: hidden;
+}
+
+/* Film Strip Gallery */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.film-strip-track {
+  display: flex;
+  animation-name: scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.film-strip-container:hover .film-strip-track {
+  animation-play-state: paused;
+}
+
+.film-strip-container {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
